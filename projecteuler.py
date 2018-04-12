@@ -66,3 +66,30 @@ while number > n:
 print(number)
 
 # 끝나고 남은 넘버 출력하면 그게 소수임.
+
+# 20180412
+# palindromic number를 만들어라(000 * 000)으로 
+
+from itertools import combinations
+
+three_digit_number = list(combinations(range(100,999),2))
+result = []
+palindromic_number = []
+
+#100-999 조합찾기 '콤비네이션'
+
+for (i, j) in three_digit_number:
+	result.append(i * j)
+
+for i in result:
+	if str(i)[0:3] == ''.join(reversed(str(i)[3:6])):
+		palindromic_number.append(i)
+	else:
+		pass
+
+# str로 만들어진 문자열을 ''에 넣어(join) 다시 문자열을 만들었네
+# 여기는 좀 검색해서 했음. 대칭수를 찾기 위해 문자처리 > 슬라이신 > 뒤집어서 일치하는지 확인
+# s[:: -1] 이것도 있든데...
+
+print(max(palindromic_number))
+
