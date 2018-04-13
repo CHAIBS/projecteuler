@@ -93,3 +93,19 @@ for i in result:
 
 print(max(palindromic_number))
 
+
+# 20180413
+# 1부터 20까지 모든 수로 나눠떨어지는 가장 최소의 숫자를 구하시오
+
+n = 1
+
+while n > 0:
+	 if n%2==0 and n%3==0 and n%4==0 and n%5==0 and n%6==0 and n%7==0 and n%8==0 and n%9==0 and n%10==0 and n%11==0 and n%12==0 and n%13==0 and n%14==0 and n%15==0 and n%16==0 and n%17==0 and n%18==0 and n%19==0 and n%20==0:
+	 	print(n)
+	 	break
+	 else:
+	 	n = n+1
+
+
+# 아니 쉽게 풀긴 했는데, 이거 연산에 시간이 좀 걸리네. 이게 요구하는 답은 아닐 수도.
+# 코드 작성하는데 사람이 쓴 시간을 고려하면 역시 이게 맞을수도 있다.
