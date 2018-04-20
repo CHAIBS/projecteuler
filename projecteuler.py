@@ -137,8 +137,11 @@ def is_prime(n):
 		number = number + 1
 		for i in prime_numbers:
 			ox.append(number % i)
+			if number % i == 0:
+				break
 		if 0 in ox:
-			ox = []	
+			ox = []
+			continue	
 		else:
 			prime_numbers.append(number)	
 			
@@ -150,3 +153,4 @@ is_prime(10001)
 # 진짜 말이 안 된다. 이거 푸는데 왜 이렇게 오래걸렸지?
 # 판별용으로 쓸 리스트를 하나 만들었다. ox 여기에 나머지를 넣어두는것
 # 0이 있으면 나눠떨어졌단 뜻이므로 소수가 아님. 근데 연산 시간 너무 오래 걸린다.
+# 중간에 효율 업!!
