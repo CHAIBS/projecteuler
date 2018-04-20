@@ -123,30 +123,30 @@ sum(list(range(1,101))) ** 2 - sum(sum_of_squares)
 
 # range(1,100)으로 해야 1 - 100까지의 집합이 된다. 
 
-# 20180416-2
+# 20180420
 # 10001번째 소수를 찾아라
 # 소수를 10001개 만들고 마지막 꺼 부르면 되는거 아님?
 
-n = 2
-prime_numbers = [2]
+def is_prime(n):
 
+	number = 2
+	prime_numbers = [2]
+	ox = []
 
-while len(prime_numbers) < 10002:
-	for i in prime_numbers:
-		n = n + 1 
-		if n % i == 0 : continue
-	
-	prime_numbers.append(n)
+	while len(prime_numbers) < n:
+		number = number + 1
+		for i in prime_numbers:
+			ox.append(number % i)
+		if 0 in ox:
+			ox = []	
+		else:
+			prime_numbers.append(number)	
 			
 
-print(prime_numbers[-1])	
+	print(prime_numbers[n-1])	
 
+is_prime(10001)
 
-# 소수인지 확인하고
-# 프라임 넘버로 나눠지면 패스
-# 끝까지 돌았는데도 안나눠지면 어펜드
-# 소수면 어펜드
-
-# 소수면 나눠 떨어지는 수가 둘이니까 집합 만들면 len이 2일듯
-
-# 컨티뉴 문을 쓸 수 있지 않을까?
+# 진짜 말이 안 된다. 이거 푸는데 왜 이렇게 오래걸렸지?
+# 판별용으로 쓸 리스트를 하나 만들었다. ox 여기에 나머지를 넣어두는것
+# 0이 있으면 나눠떨어졌단 뜻이므로 소수가 아님. 근데 연산 시간 너무 오래 걸린다.
