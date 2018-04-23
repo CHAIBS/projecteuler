@@ -180,3 +180,16 @@ for i in set1:
 	if '0' in i : pass
 	set2.append(int(i[0])*int(i[1])*int(i[2])*int(i[3])*int(i[4])*int(i[5])*int(i[6])*int(i[7])*int(i[8])*int(i[9])*int(i[10])*int(i[11])*int(i[12]))
 print(max(set2))
+
+#20180423
+# 피타고라스 삼조 : a제곱 더하기 b제곱은 c제곱
+# a+b+c = 1000이 되는 하나가 있는데 이거 찾으셈
+from itertools import combinations
+
+test = list(combinations(range(1,999),3))로 하기엔 경우의 수가 많음.
+
+for (a,b,c) in test:
+	if a**2 + b**2 == c**2 and a+b+c == 1000:
+		print(a * b * c)
+
+# 이것도 넘 느린데 일단은 맞음
