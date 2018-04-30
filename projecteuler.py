@@ -193,3 +193,80 @@ for (a,b,c) in test:
 		print(a * b * c)
 
 # 이것도 넘 느린데 일단은 맞음
+#20180423-2
+# 2백만 이하의 소수 합 구하기
+
+number = 3
+prime_numbers = [2, 3]
+ox = []
+
+while number < 2000000:
+	number = number + 2
+	for i in prime_numbers:
+		ox.append(number % i)
+		if number % i == 0:
+			break
+	if 0 in ox:
+		ox = []
+		continue	
+	else:
+		prime_numbers.append(number)
+
+print(sum(prime_numbers))
+
+# 아니 이 식이 맞긴 맞아...근데 계산이 진짜 말도 안 되게 오래 걸려
+# 이거는 뭐 소수 판별식을 만들어놔서...
+
+# 20180423-3
+# 앞에꺼 아직 돌아가고 있으니까는...
+
+import re
+import bs4
+import requests
+from urllib.request import urlopen
+
+url = 'https://projecteuler.net/problem=11'
+html = requests.get(url).text
+soup = bs4.BeautifulSoup(html, 'html.parser')
+data = soup.find_all('p')
+data = data[1].getText()
+data = data.replace('\n', ' ')
+data = data.split(' ')
+del data[0]
+
+# 클리닝 
+# 꺼낼 때 int 써야함 (08 이런 애들이 있으니까)
+# 복붙하면 깔끔하지 못하니까 여기서 데이터를 가지고
+
+product = []
+
+# 업 & 다운
+for i in list(range(0, 339)):
+	product.append(int(data[i])*int(data[i+20])*int(data[i+40])*int(data[60]))
+
+# 왼쪽 & 오른쪽
+
+for i in list(range(0, 399)):
+	if re.match('\d*7$', str(i)) is not None or re.match('\d*8$', str(i)) is not None or re.match('\d*9$', str(i)) is not None:
+		pass
+	else:
+		product.append(int(data[i])*int(data[i+1])*int(data[i+2])*int(data[i+3]))
+
+# 대각선 두개
+for i in list(range(0, 399)):
+	if re.match('\d*7$', str(i)) is not None or re.match('\d*8$', str(i)) is not None or re.match('\d*9$', str(i)) is not None:
+		pass
+	elif i > 336:
+		pass
+	else:
+		product.append(int(data[i])*int(data[i+21])*int(data[i+42])*int(data[i+63]))
+
+for i in list(range(0, 399)):
+	if re.match('\d*0$', str(i)) is not None or re.match('\d*1$', str(i)) is not None or re.match('\d*2$', str(i)) is not None:
+		pass
+	elif i > 340:
+		pass
+	else:
+		product.append(int(data[i])*int(data[i+19])*int(data[i+38])*int(data[i+57]))
+
+# 리.매치를 이용해서 정규표현식을 조건으로 넣는 걸 배웠는데 넘 복잡하다...
