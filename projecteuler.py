@@ -63,6 +63,8 @@ while number > n:
 	else:
 		n = n + 1
 
+prime_factor.append(number)
+
 print(number)
 
 # 끝나고 남은 넘버 출력하면 그게 소수임.
@@ -270,3 +272,51 @@ for i in list(range(0, 399)):
 		product.append(int(data[i])*int(data[i+19])*int(data[i+38])*int(data[i+57]))
 
 # 리.매치를 이용해서 정규표현식을 조건으로 넣는 걸 배웠는데 넘 복잡하다...
+# 2차원 배열을 썼어야 했나...?흠
+
+# 20180430
+
+n = 0
+triangle_number = 0
+divisors = []
+
+while n >= 0:
+	n = n + 1
+	triangle_number = n * (n+1) / 2
+	for i in list(range(1,n+1)):
+		if triangle_number % i == 0:
+			divisors.append(i)
+	if len(divisors) >= 500:
+		print(triangle_number)
+		break
+	else:
+		divisors = []
+
+# 이게 식은 무조건 맞는데 너무 오래 걸린다. 
+# 약수의 개수를 카운트 하는 함수는 소수 확인과 같음
+# 수학적 원리를 찾아내야 한다 >> 실제로도 필요한가?는 다른 문제긴 함
+
+def find_by_divisors(n):
+
+	number = 1
+	triangle_number = 1
+	prime_number = 2
+	divisors = []
+
+	while True:
+		number = number + 1
+		triangle_number = number * (number+1) / 2
+# 트라이앵글 넘버를 구하고 이제 약수의 개수를 구할 차례
+# (m+1)(n+1)을 쓸 수 있나? 다른 방법을 구하는게?
+		while triangle_number > prime_number:
+			if triangle_number % prime_number == 0:
+				triangle_number / prime_number
+				divisors.append(prime_number)
+			else:
+				prime_number = prime_number + 1
+
+		divisors_cal = 
+		if len(divisors_cal) > n:
+			print(triangle_number)
+
+
