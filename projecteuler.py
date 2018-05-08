@@ -296,27 +296,37 @@ while n >= 0:
 # 약수의 개수를 카운트 하는 함수는 소수 확인과 같음
 # 수학적 원리를 찾아내야 한다 >> 실제로도 필요한가?는 다른 문제긴 함
 
+from numpy import prod
+
 def find_by_divisors(n):
 
 	number = 1
 	triangle_number = 1
 	prime_number = 2
 	divisors = []
+	divisors_cal = []
 
 	while True:
 		number = number + 1
 		triangle_number = number * (number+1) / 2
-# 트라이앵글 넘버를 구하고 이제 약수의 개수를 구할 차례
-# (m+1)(n+1)을 쓸 수 있나? 다른 방법을 구하는게?
+
 		while triangle_number > prime_number:
 			if triangle_number % prime_number == 0:
 				triangle_number / prime_number
 				divisors.append(prime_number)
 			else:
 				prime_number = prime_number + 1
-
-		divisors_cal = 
-		if len(divisors_cal) > n:
+		
+		for i in list(set(divisors)):
+			divisors_cal.append(divisors.count(i) + 1)
+		
+		if prod(divisors_cal) > n:
 			print(triangle_number)
+			break
+		else:
+			divisors = []
+			divisors_cal = []
+
+find_by_divisors(500)
 
 
