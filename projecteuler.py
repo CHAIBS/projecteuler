@@ -330,3 +330,36 @@ def find_by_divisors(n):
 			divisors_cal = []
 
 find_by_divisors(500)
+
+# triangle number 를 고쳐가면서 약수를 구했으니까 다시 triangle number를 구하려면 약수를 몽땅 곱해야함
+
+# 20180509-2
+# 50자리 숫자 100개의 합을 구한 후 앞에서부터 10개 숫자 구하라
+# 이거 머 영어 해석도 못했음...
+
+import re
+import bs4
+import requests
+from urllib.request import urlopen
+
+url = 'https://projecteuler.net/problem=13'
+html = requests.get(url).text
+soup = bs4.BeautifulSoup(html, 'html.parser')
+data = soup.find_all('div')
+data = data[10].getText()
+data = data.replace('\n', '')
+
+i = 0
+j = 50
+count = 0
+result = []
+
+while count != 100:
+	count = count + 1
+	result.append(int(data[i:j]))
+	i = i + 50
+	j = j + 50
+
+str(sum(result))[0:10]
+
+# 이건 뭐 어렵지 않았다.
