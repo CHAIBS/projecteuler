@@ -302,7 +302,7 @@ def find_by_divisors(n):
 
 	number = 1
 	triangle_number = 1
-	prime_number = 2
+	divisor = 2
 	divisors = []
 	divisors_cal = []
 
@@ -310,23 +310,23 @@ def find_by_divisors(n):
 		number = number + 1
 		triangle_number = number * (number+1) / 2
 
-		while triangle_number > prime_number:
-			if triangle_number % prime_number == 0:
-				triangle_number / prime_number
-				divisors.append(prime_number)
+		while triangle_number >= divisor:
+			if triangle_number % divisor == 0:
+				triangle_number = triangle_number / divisor
+				divisors.append(divisor)
 			else:
-				prime_number = prime_number + 1
+				divisor = divisor + 1
+		
+		divisor = 2
 		
 		for i in list(set(divisors)):
 			divisors_cal.append(divisors.count(i) + 1)
 		
-		if prod(divisors_cal) > n:
-			print(triangle_number)
+		if prod(divisors_cal) >= n:
+			print(prod(divisors))
 			break
 		else:
 			divisors = []
 			divisors_cal = []
 
 find_by_divisors(500)
-
-
