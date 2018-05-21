@@ -363,3 +363,33 @@ while count != 100:
 str(sum(result))[0:10]
 
 # 이건 뭐 어렵지 않았다.
+
+# 20180509-3
+# n이 짝수면 2로 나누고, 홀수면 3n+1을 해라
+# 13으로 시작하면 열번째에 1이 되는데...
+# 이걸 collatz sequence 라고 하고
+# 1백만 미만의 숫자 중 가장 긴 시퀸스를 만드는 숫자는?
+# 시퀸스 중간에 1백만이 넘는 건 노상관이다.
+
+
+find_longest = []
+ox = []
+
+for i in list(range(1, 1000000)):
+	while True:
+		ox.append(i)
+		if i % 2 == 0:
+			i = i/2
+		elif i == 1:
+			find_longest.append(len(ox))
+			ox = []
+			break
+		else:
+			i = 3 * i + 1
+
+
+# 짝수는 무조건 아웃 > 꼭 그런 건 아니네
+# 판별식으로 1씩 시퀸스 따르게 만들어서 길이 재서 넣자
+# 개중 가장 긴 것 몇번째인지 확인하긔
+
+
