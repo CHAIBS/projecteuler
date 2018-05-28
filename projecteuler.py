@@ -391,5 +391,23 @@ for i in list(range(1, 1000000)):
 # 짝수는 무조건 아웃 > 꼭 그런 건 아니네
 # 판별식으로 1씩 시퀸스 따르게 만들어서 길이 재서 넣자
 # 개중 가장 긴 것 몇번째인지 확인하긔
+# 20180521 -2
+# Lattice paths
+# 20 * 20 격자무늬에서 대각선 끝 점으로 가는 길은?
 
 
+# 20180528
+
+n = str(2 ** 1000)
+m = list(range(1, len(str(n))))
+m.reverse()
+for_plus = []
+
+for i in m:
+	if n == re.compile('^0'):
+		n = n[1:]
+	else:
+		for_plus.append(int(n) // (10 ** i))
+		n = n[1:]
+
+sum(for_plus) + int(n)
